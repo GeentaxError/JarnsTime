@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarn's Time</title>
+    <link rel="stylesheet" href="landingpage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- BACKGROUND VIDEO FOR LANDING PAGE -->
+    <div id="landingBgVideoContainer">
+        <video id="landingBgVideo" autoplay loop muted playsinline>
+            <source src="landingpagebg.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!--NAVBAR-->
+    <div class="navbar">
+        <div class="logo">
+            <img src="logo.png" alt="Jarn's Time Logo" >
+        </div>
+        <div class="menu">
+            <a href="#home" data-lang="home" onclick="showSection('home', event)">Home</a>
+            <a href="#shop" data-lang="shop" onclick="showSection('shop', event)">Shop</a>
+            <a href="#brands" data-lang="brands" onclick="showSection('brands', event)">Brands</a>
+            <!-- Removed Contact link -->
+        </div>
+        <div class="extras">
+            <div class="search-bar" style="position: relative;">
+                <input type="text" id="searchInput" placeholder="Search Watches..." onkeyup="filterWatches()">
+                <div id="suggestions" class="search-suggestions"></div>
+            </div>
+            <div class="language-select">
+                <select id="languageSelect" onchange="switchLanguage()">
+                    <option value="en">EN</option>
+                    <option value="jp">JP</option>
+                    <option value="kr">KR</option>
+                </select>
+            </div>
+            <div class="cart" data-lang="cart" onclick="showSection('cart', event); loadCart();">🛒</div>
+            <div class="auth-buttons">
+                <button onclick="showLogin(event)" class="login-btn">Login</button>
+                <button onclick="showRegister(event)" class="register-btn">Register</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HOME/LANDING PAGE SECTION -->
+    <div class="home-section" id="home" style="display: block;">
+        <div class="landing-content">
+            <img src="logo.png" alt="Jarn's Time Logo" class="landing-logo" style="width:180px; height:auto; margin-bottom:0.5em;">
+            <p class="landing-desc">Discover luxury watches from the world's finest brands.</p>
+            <button onclick="showSection('shop')" class="shop-now-btn">Shop Now</button>
+        </div>
+    </div>
+
+    <!--ANNOUNCEMENTS-->
+    <div class="announcements" id="announcementsBar">
+      <marquee>  <h3 data-lang="promo">SUMMER PROMO!! &nbsp;&nbsp; Get 10% off on all watches. &nbsp;&nbsp; Use code: <strong>MYNAMEISJARN10</strong> &nbsp;&nbsp;&nbsp; Free shipping on all orders above ₱500,000 </h3></marquee>
+    </div>
+    
+    <!--WATCHES-->
+    <div class = "shop" id="shop" style="display:none;">
+    <div class="watch_header1" id ="header1">
+        <h2 data-lang="popularWatches">Popular Watches</h2>
+    </div>
+    <div class="watch-container" id="watchContainer">
+        <div class="watch-card">
+            <img src="TagHeuerMonaco.png" alt="Tag Heuer Monaco">
+            <div class="details">
+                <h3>Tag Heuer Monaco</h3>
+                <p>₱556,000.00</p>
+                <p class="stock-info">Stock: 10</p>
+                <button type="button" data-lang="viewDetails">View Details</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this, event)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="watch-card">
+            <img src="CartierTank.png" alt="Cartier Tank Watch">
+            <div class="details">
+                <h3>Cartier Tank</h3>
+                <p>₱185,000.00</p>
+                <p class="stock-info">Stock: 10</p>
+                <button type="button" data-lang="viewDetails">View Details</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this, event)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="watch-card">
+            <img src="PatekPhilippeGrandmasterChime.png" alt="Patek Philippe Grandmaster Chime">  
+            <div class="details">
+                <h3>Patek Philippe Grandmaster Chime</h3>
+                <p>₱335,597,616.00</p>
+                <p class="stock-info">Stock: 10</p>
+                <button type="button" data-lang="viewDetails">View Details</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this, event)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="watch-card">
+            <img src="RolexSubmariner.png" alt="Rolex Submariner">
+            <div class="details">
+                <h3>Rolex Submariner</h3>
+                <p>₱750,000.00</p>
+                <p class="stock-info">Stock: 10</p>
+                <button type="button" data-lang="viewDetails">View Details</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this, event)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="watch-card">
+            <img src="OmegaSpeedmaster.png" alt="Omega Speedmaster">
+            <div class="details">
+                <h3>Omega Speedmaster</h3>
+                <p>₱450,000.00</p>
+                <p class="stock-info">Stock: 10</p>
+                <button type="button" data-lang="viewDetails">View Details</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this, event)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="watch-card">
+            <img src="AudemarsPiquetRoyalOak.png" alt="Audemars Piguet Royal Oak">
+            <div class="details">
+                <h3>Audemars Piguet Royal Oak</h3>
+                <p>₱1,200,000.00</p>
+                <p class="stock-info">Stock: 10</p>
+                <button type="button" data-lang="viewDetails">View Details</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this, event)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="watch-card">
+            <img src="BreitlingNavitimer.png" alt="Breitling Navitimer">
+            <div class="details">
+                <h3>Breitling Navitimer</h3>
+                <p>₱650,000.00</p>
+                <p class="stock-info">Stock: 10</p>
+                <button type="button" data-lang="viewDetails">View Details</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this, event)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="watch-card">
+            <img src="SeikoPresage.png" alt="Seiko Presage">
+            <div class="details">
+                <h3>Seiko Presage</h3>
+                <p>₱120,000.00</p>
+                <p class="stock-info">Stock: 10</p>
+                <button type="button" data-lang="viewDetails">View Details</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this, event)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="watch-card">
+            <img src="TissotLeLocle.png" alt="Tissot Le Locle">
+            <div class="details">
+                <h3>Tissot Le Locle</h3>
+                <p>₱95,000.00</p>
+                <p class="stock-info">Stock: 10</p>
+                <button type="button" data-lang="viewDetails">View Details</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this, event)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="watch-card">
+            <img src="HublotBigBang.png" alt="Hublot Big Bang">
+            <div class="details">
+                <h3>Hublot Big Bang</h3>
+                <p>₱2,500,000.00</p>
+                <p class="stock-info">Stock: 10</p>
+                <button type="button" data-lang="viewDetails">View Details</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this, event)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="watch-card">
+            <img src="LonginesMaster.png" alt="Longines Master">
+            <div class="details">
+                <h3>Longines Master</h3>
+                <p>₱150,000.00</p>
+                <p class="stock-info">Stock: 10</p>
+                <button type="button" data-lang="viewDetails">View Details</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this, event)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="watch-card">
+            <img src="CartierSantos.png" alt="IWC Portugieser">
+            <div class="details">
+                <h3>Cartier Santos</h3>
+                <p>₱1,800,000.00</p>
+                <p class="stock-info">Stock: 10</p>
+                <button type="button" data-lang="viewDetails">View Details</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this, event)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="watch-card">
+            <img src="PatekPhilippePerpetualCalendar.png" alt="Patek Philippe Perpetual Calendar">
+            <div class="details">
+                <h3>Patek Philippe Perpetual Calendar</h3>
+                <p>₱950,000.00</p>
+                <p class="stock-info">Stock: 10</p>
+                <button type="button" data-lang="viewDetails">View Details</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this, event)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="watch-card">
+            <img src="TudorBlackBay.png" alt="Tudor Black Bay">
+            <div class="details">
+                <h3>Tudor Black Bay</h3>
+                <p>₱1,200,000.00</p>
+                <p class="stock-info">Stock: 10</p>
+                <button type="button" data-lang="viewDetails">View Details</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this, event)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="watch-card">
+            <img src="BreguetGrandeComplication.png" alt="Breguet Grande Complication">
+            <div class="details">
+                <h3>Breguet Grande Complication</h3>
+                <p>₱2,300,000.00</p>
+                <p class="stock-info">Stock: 10</p>
+                <button type="button" data-lang="viewDetails">View Details</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this, event)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="watch-card">
+            <img src="IWCPilot.png" alt="IWC Pilot's Watch">
+            <div class="details">
+                <h3>IWC Pilot's Watch</h3>
+                <p>₱850,000.00</p>
+                <p class="stock-info">Stock: 10</p>
+                <button type="button" data-lang="viewDetails">View Details</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this, event)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="watch-card">
+            <img src="JaegerLecoultre.png" alt="Jaeger-LeCoultre Reverso">
+            <div class="details">
+                <h3>Jaeger-LeCoultre Reverso</h3>
+                <p>₱1,100,000.00</p>
+                <p class="stock-info">Stock: 10</p>
+                <button type="button" data-lang="viewDetails">View Details</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this, event)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="watch-card">
+            <img src="BulgariOcto.png" alt="Bulgari Octo Finissimo">
+            <div class="details">
+                <h3>Bulgari Octo Finissimo</h3>
+                <p>₱75,000.00</p>
+                <p class="stock-info">Stock: 10</p>
+                <button type="button" data-lang="viewDetails">View Details</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this, event)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="watch-card">
+            <img src="GrandSeiko.png" alt="Grand Seiko Spring Drive">
+            <div class="details">
+                <h3>Grand Seiko Spring Drive</h3>
+                <p>₱1,500,000.00</p>
+                <p class="stock-info">Stock: 10</p>
+                <button type="button" data-lang="viewDetails">View Details</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this, event)">Add to Cart</button>
+            </div>
+        </div>
+        
+        <div class="watch-card">
+            <img src="Montblac1858.png" alt="Montblanc 1858">
+            <div class="details">
+                <h3>Montblanc 1858</h3>
+                <p>₱650,000.00</p>
+                <p class="stock-info">Stock: 10</p>
+                <button type="button" data-lang="viewDetails">View Details</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this, event)">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!--BRANDS-->
+    <div class="brands-section" id="brands" style="display:none;">
+        <h2 data-lang="brands">Brands</h2>
+        <div class="brand-container">
+            
+            <div class="brand-card" onclick="showBrandWatches('Rolex')">
+                <img src="RolexLogo.png" alt="Rolex Logo" class="brand-logo">
+                <h3>Rolex</h3>
+            </div>
+
+            
+            <div class="brand-card" onclick="showBrandWatches('Omega')">
+                <img src="OmegaLogo.png" alt="Omega Logo" class="brand-logo">
+                <h3>Omega</h3>
+            </div>
+
+            
+            <div class="brand-card" onclick="showBrandWatches('Patek Philippe')">
+                <img src="PatekPhilippeLogo.png" alt="Patek Philippe Logo" class="brand-logo">
+                <h3>Patek Philippe</h3>
+            </div>
+
+            
+            <div class="brand-card" onclick="showBrandWatches('Seiko')">
+                <img src="SeikoLogo.png" alt="Seiko Logo" class="brand-logo">
+                <h3>Seiko</h3>
+            </div>
+
+            <div class="brand-card" onclick="showBrandWatches('Cartier')">
+                <img src="CartierLogo.png" alt="Cartier Logo" class="brand-logo">
+                <h3>Cartier</h3>
+            </div>
+
+            <div class="brand-card" onclick="showBrandWatches('Tag Heuer')">
+                <img src="TagHeuerLogo.png" alt="Tag Heuer Logo" class="brand-logo">
+                <h3>Cartier</h3>
+            </div>
+        </div>
+        </div>
+
+        
+        <div id="brandWatches" class="brand-watches-container" style="display: none;">
+            <h3 id="brandName"></h3>
+            <div id="brandWatchesList" class="brand-watches-list"></div>
+        </div>
+    </div>
+
+    <!--REGISTER MODAL-->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Register</h2>
+            <form id="registerForm">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <!--LOGIN MODAL-->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="loginEmailOrUsername">Email or Username:</label>
+                <input type="text" id="loginEmailOrUsername" name="loginEmailOrUsername" required>
+                
+                <label for="loginPassword">Password:</label>
+                <input type="password" id="loginPassword" name="loginPassword" required>
+                
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- CART SECTION -->
+<div class="cart-section" id="cart" style="display:none;">
+    <h2>Your Cart</h2>
+    <div id="cartItems"></div>
+    <div id="cartEmpty" style="display:none; color: #888; margin-top: 20px;">Your cart is empty.</div>
+    <div id="cartTotal" style="margin-top:20px; font-weight:bold;"></div>
+    <!-- Delivery Info Form -->
+    <form id="deliveryForm" style="margin-top:24px; display:none;">
+        <h3>Delivery Information</h3>
+        <label for="deliveryName">Full Name:</label>
+        <input type="text" id="deliveryName" name="deliveryName" required style="width:100%;margin-bottom:10px;">
+        <label for="deliveryAddress">Address:</label>
+        <input type="text" id="deliveryAddress" name="deliveryAddress" required style="width:100%;margin-bottom:10px;">
+        <label for="deliveryContact">Contact Number:</label>
+        <input type="text" id="deliveryContact" name="deliveryContact" required style="width:100%;margin-bottom:10px;">
+    </form>
+    <button id="checkoutBtn" style="margin-top:24px; width:100%; padding:14px; background:#222; color:#fff; border:none; border-radius:6px; font-size:1.1em; cursor:pointer; display:none;">Checkout</button>
+    <button id="trackOrderBtn" style="margin-top:12px; width:100%; padding:10px; background:#b8860b; color:#fff; border:none; border-radius:6px; font-size:1em; cursor:pointer; display:none;">Track Order</button>
+</div>
+
+    <!-- ORDER TRACKING PAGE -->
+    <div class="cart-section" id="orderTracking" style="display:none;">
+        <h2>Order Tracking</h2>
+        <div id="orderStatus"></div>
+        <button onclick="showSection('home')" style="margin-top:24px; width:100%; padding:12px; background:#222; color:#fff; border:none; border-radius:6px; font-size:1em; cursor:pointer;">Back to Home</button>
+    </div>
+
+    <!-- VIEW DETAILS MODAL -->
+<div id="detailsModal" class="modal">
+    <div class="modal-content" id="detailsModalContent" style="max-width:400px;">
+        <span class="close" onclick="closeDetailsModal()">&times;</span>
+        <div id="detailsModalBody"></div>
+    </div>
+</div>
+
+    <!--SCRIPT-->
+    <script>
+
+        
+        // Example for products array
+const products = [
+    { name: "Tag Heuer Monaco", image: "TagHeuerMonaco.png", stock: 10 },
+    { name: "Cartier Tank", image: "CartierTank.png", stock: 10 },
+    { name: "Patek Philippe Grandmaster Chime", image: "PatekPhilippeGrandMasterChime.png", stock: 10 },
+    { name: "Omega Speedmaster", image: "OmegaSpeedmaster.png", stock: 10 },
+    { name: "Audemars Piguet Royal Oak", image: "AudemarsPiquetRoyalOak.png", stock: 10 },
+    { name: "Rolex Submariner", image: "RolexSubmariner.png", stock: 10 },
+    { name: "Breitling Navitimer", image: "BreitlingNavitimer.png", stock: 10 },
+    { name: "Seiko Presage", image: "SeikoPresage.png", stock: 10 },
+    { name: "Tissot Le Locle", image: "TissotLeLocle.png", stock: 10 },
+    { name: "Hublot Big Bang", image: "HublotBigBang.png", stock: 10 },
+    { name: "Longines Master", image: "LonginesMaster.png", stock: 10 },
+    { name: "Cartier Santos", image: "CartierSantos.png", stock: 10 },
+    { name: "Patek Philippe Perpetual Calendar", image: "PatekPhilippePerpetualCalendar.png", stock: 10 },
+    { name: "Tudor Black Bay", image: "TudorBlackBay.png", stock: 10 },
+    { name: "Breguet Grande Complication", image: "BreguetGrandeComplication.png", stock: 10 },
+    { name: "IWC Pilot's Watch", image: "IWCPilot.png", stock: 10 },
+    { name: "Jaeger-LeCoultre", image: "JaegerLecoultre.png", stock: 10 },
+    { name: "Bulgari Octo Finissimo", image: "BulgariOcto.png", stock: 10 },
+    { name: "Grand Seiko Spring Drive", image: "GrandSeiko.png", stock: 10 },
+    { name: "Montblanc 1858", image: "Montblac1858.png", stock: 10 }
+];
+     
+        const translations = {
+            en: {
+                logo: "Jarn's Time",
+                shop: "Shop",
+                brands: "Brands",
+                // contact: "Contact", // Removed
+                cart: "🛒",
+                promo: "SUMMER PROMO!! &nbsp;&nbsp; Get 10% off on all watches. &nbsp;&nbsp; Use code: <strong>MYNAMEISJARN10</strong> &nbsp;&nbsp;&nbsp; Free shipping on all orders above ₱500,000",
+                popularWatches: "Popular Watches",
+                viewDetails: "View Details",
+                home: "Home"
+            },
+            jp: {
+                logo: "ジャーンの時間",
+                shop: "ショップ",
+                brands: "ブランド",
+                // contact: "お問い合わせ", // Removed
+                cart: "🛒",
+                promo: "夏のプロモーション!! &nbsp;&nbsp; すべての時計が10％オフ。 &nbsp;&nbsp; コードを使用: <strong>MYNAMEISJARN10</strong> &nbsp;&nbsp;&nbsp; ₱500,000以上の注文で送料無料",
+                popularWatches: "人気の時計",
+                viewDetails: "詳細を見る",
+                home: "ホーム"
+            },
+            kr: {
+                logo: "잔의 시간",
+                shop: "쇼핑",
+                brands: "브랜드",
+                // contact: "문의하기", // Removed
+                cart: "🛒",
+                promo: "여름 프로모션!! &nbsp;&nbsp; 모든 시계 10% 할인. &nbsp;&nbsp; 코드 사용: <strong>MYNAMEISJARN10</strong> &nbsp;&nbsp;&nbsp; ₱500,000 이상 주문 시 무료 배송",
+                popularWatches: "인기 시계",
+                viewDetails: "자세히 보기",
+                home: "홈"
+            }
+        };
+
+        function switchLanguage() {
+            const selectedLang = document.getElementById('languageSelect').value;
+            const elements = document.querySelectorAll('[data-lang]');
+
+            elements.forEach(element => {
+                const key = element.getAttribute('data-lang');
+                if (translations[selectedLang] && translations[selectedLang][key]) {
+                    element.innerHTML = translations[selectedLang][key];
+                }
+            });
+        }
+
+        function filterWatches() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const suggestions = document.getElementById('suggestions');
+            suggestions.innerHTML = ''; 
+
+            if (input) {
+                const matches = products.filter(product => product.name.toLowerCase().includes(input));
+                matches.forEach(match => {
+                    const suggestionItem = document.createElement('div');
+                    suggestionItem.style.display = 'flex';
+                    suggestionItem.style.alignItems = 'center';
+                    suggestionItem.style.gap = '10px';
+                    suggestionItem.style.padding = '5px';
+
+                    //mini image
+                    const img = document.createElement('img');
+                    img.src = match.image;
+                    img.alt = match.name;
+                    img.style.width = '30px';
+                    img.style.height = '30px';
+                    img.style.borderRadius = '4px';
+
+                    //product name
+                    const text = document.createElement('span');
+                    text.textContent = match.name;
+
+                    // appending
+                    suggestionItem.appendChild(img);
+                    suggestionItem.appendChild(text);
+
+                    // click event
+                    suggestionItem.onclick = () => {
+                        document.getElementById('searchInput').value = match.name;
+                        suggestions.innerHTML = '';
+                        // Find the corresponding watch-card button and open the modal
+                        setTimeout(() => {
+                            const card = Array.from(document.querySelectorAll('.watch-card')).find(card =>
+                                card.querySelector('h3') && card.querySelector('h3').textContent === match.name
+                            );
+                            if (card) {
+                                const viewBtn = card.querySelector('button[data-lang="viewDetails"]');
+                                if (viewBtn) showDetails(viewBtn);
+                            }
+                        }, 0);
+                    };
+
+                    suggestions.appendChild(suggestionItem);
+                });
+            }
+        }
+
+        // Add "home" to translations
+        translations.en.home = "Home";
+        translations.jp.home = "ホーム";
+        translations.kr.home = "홈";
+
+        // Show only the selected section, and handle background video for home
+        function showSection(sectionId, event) {
+            if (event) event.preventDefault();
+            const sections = ['home', 'shop', 'brands', 'cart', 'orderTracking'];
+            sections.forEach(id => {
+                const section = document.getElementById(id);
+                if (section) {
+                    section.style.display = (id === sectionId) ? 'block' : 'none';
+                }
+            });
+
+            // Toggle body scroll for home section
+            if (sectionId === 'home') {
+                document.body.classList.add('no-scroll');
+                document.body.classList.add('landing-page');
+            } else {
+                document.body.classList.remove('no-scroll');
+                document.body.classList.remove('landing-page');
+            }
+
+            // Show video only on home
+            const bgVideo = document.getElementById('landingBgVideoContainer');
+            if (sectionId === 'home') {
+                if(bgVideo) bgVideo.style.display = 'block';
+            } else {
+                if(bgVideo) bgVideo.style.display = 'none';
+            }
+            // Hide announcements on home, show otherwise
+            const announcements = document.getElementById('announcementsBar');
+            if (announcements) {
+                announcements.style.display = (sectionId === 'home') ? 'none' : 'block';
+            }
+
+            // Hide brand watches container unless in brands section
+            const brandWatchesContainer = document.getElementById('brandWatches');
+            if (brandWatchesContainer) {
+                brandWatchesContainer.style.display = (sectionId === 'brands') ? 'block' : 'none';
+            }
+        }
+
+        // REGISTER
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // STORAGE
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+
+            const isAlreadyRegistered = users.some(user => user.email === email || user.username === username);
+
+            if (isAlreadyRegistered) {
+                alert('Email or username is already registered. Please use different credentials.');
+                return; 
+            }
+
+            // SAVE TO STORAGE
+            users.push({ email, username, password });
+            localStorage.setItem('users', JSON.stringify(users));
+
+            alert('Registration successful! You can now log in.');
+
+            
+            document.getElementById('registerForm').reset();
+
+            closeModal();
+        });
+
+        // LOGIN
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            const loginInput = document.getElementById('loginEmailOrUsername').value;
+            const loginPassword = document.getElementById('loginPassword').value;
+
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+
+            // AUTHENTICATION
+            const user = users.find(user => 
+                (user.email === loginInput || user.username === loginInput) && user.password === loginPassword
+            );
+
+            if (user) {
+                alert(`Welcome, ${user.username}!`);
+                localStorage.setItem('loggedInUser', JSON.stringify(user)); 
+                closeModal(); // <-- close modal first
+                updateAuthUI(); // <-- then update UI
+            } else {
+                alert('Invalid email/username or password. Please try again.');
+            }
+        });
+
+        
+        function updateAuthUI() {
+            const authButtons = document.querySelector('.auth-buttons');
+            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+            if (loggedInUser) {
+                authButtons.innerHTML = `
+                    <span style="color:white">Hello, ${loggedInUser.username}!</span>
+                    <button onclick="logout()">Log Out</button>
+                `;
+            } else {
+                authButtons.innerHTML = `
+                    <button id="loginBtn" class="login-btn">Login</button>
+                    <button id="registerBtn" class="register-btn">Register</button>
+                `;
+                // Re-attach event listeners
+                document.getElementById('loginBtn').onclick = showLogin;
+                document.getElementById('registerBtn').onclick = showRegister;
+            }
+        }
+
+        // LOG OUT
+        function logout() {
+            const confirmation = confirm("Are you sure you want to log out?");
+            if (confirmation) {
+                localStorage.removeItem('loggedInUser'); 
+                updateAuthUI(); 
+            }
+        }
+
+       
+        document.addEventListener('DOMContentLoaded', () => {
+            updateAuthUI();
+            showSection('home');
+            attachViewDetailsEvents();
+        });
+
+        
+        function showLogin(event) {
+            closeModal();
+            const modal = document.getElementById('loginModal');
+            modal.style.display = 'block';
+            if (event) event.stopPropagation();
+        }
+
+        
+        function showRegister() {
+            const modal = document.getElementById('registerModal');
+            modal.style.display = 'block';
+        }
+
+        
+        function closeModal() {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => modal.style.display = 'none');
+        }
+
+        
+        window.onclick = function(event) {
+            // Only close if clicking directly on the modal background, not on modal-content or any button
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (
+                    modal.style.display === 'block' &&
+                    event.target === modal
+                ) {
+                    modal.style.display = 'none';
+                }
+            });
+        };
+
+        // BRANDS>
+        const brandWatchesData = {
+            "Rolex": [
+                { name: "Rolex Submariner", image: "RolexSubmariner.png", price: "₱750,000.00", stock: 10 }
+            ],
+            "Omega": [
+                { name: "Omega Speedmaster", image: "OmegaSpeedmaster.png", price: "₱450,000.00", stock: 10 }
+            ],
+            "Patek Philippe": [
+                { name: "Patek Philippe Grandmaster Chime", image: "PatekPhilippeGrandmasterChime.png", price: "₱335,597,616.00", stock: 10 },
+                { name: "Patek Philippe Perpetual Calendar", image: "PatekPhilippePerpetualCalendar.png", price: "₱950,000.00", stock: 10 }
+            ],
+            "Seiko": [
+                { name: "Seiko Presage", image: "SeikoPresage.png", price: "₱120,000.00", stock: 10 },
+                { name: "Grand Seiko Spring Drive", image: "GrandSeiko.png", price: "₱1,500,000.00", stock: 10 }
+            ],
+            "Cartier": [
+                { name: "Cartier Santos", image: "CartierSantos.png", price: "₱1,800,000.00", stock: 10 },
+                { name: "Cartier Tank", image: "CartierTank.png", price: "₱185,000.00", stock: 10 }
+            ],
+            "Tag Heuer": [
+                { name: "Tag Heuer Monaco", image: "TagHeuerMonaco.png", price: "₱556,000.00", stock: 10 }
+            ]
+        };
+
+        // --- Update stock numbers in real time and prevent adding to cart if out of stock ---
+
+// Utility: Get product by name (from products array)
+function getProductByName(name) {
+    return products.find(p => p.name === name);
+}
+
+// Update all stock displays in shop and brands
+function updateStockDisplays() {
+    // Update shop cards
+    document.querySelectorAll('.watch-card').forEach(card => {
+        const name = card.querySelector('h3')?.textContent;
+        if (!name) return;
+        const product = getProductByName(name);
+        const stockInfo = card.querySelector('.stock-info');
+        const addBtn = card.querySelector('.add-to-cart-btn');
+        if (product && stockInfo) {
+            stockInfo.textContent = `Stock: ${product.stock}`;
+            if (addBtn) {
+                addBtn.disabled = product.stock <= 0;
+                addBtn.textContent = product.stock <= 0 ? "Out of Stock" : "Add to Cart";
+            }
+        }
+    });
+    // Update brand watches cards
+    document.querySelectorAll('#brandWatchesList .watch-card').forEach(card => {
+        const name = card.querySelector('h3')?.textContent;
+        if (!name) return;
+        // Try to find in products or brandWatchesData
+        let product = getProductByName(name);
+        if (!product) {
+            for (const brand in brandWatchesData) {
+                const found = brandWatchesData[brand].find(w => w.name === name);
+                if (found) product = found;
+            }
+        }
+        const stockInfo = card.querySelector('.stock-info');
+        const addBtn = card.querySelector('.add-to-cart-btn');
+        if (product && stockInfo) {
+            stockInfo.textContent = `Stock: ${product.stock}`;
+            if (addBtn) {
+                addBtn.disabled = product.stock <= 0;
+                addBtn.textContent = product.stock <= 0 ? "Out of Stock" : "Add to Cart";
+            }
+        }
+    });
+}
+
+// Update stock after checkout and persist to localStorage
+function updateStockAfterCheckout(cart) {
+    cart.forEach(item => {
+        let product = getProductByName(item.name);
+        if (product && typeof product.stock === "number") {
+            product.stock -= item.quantity;
+            if (product.stock < 0) product.stock = 0;
+        }
+        // Also update in brandWatchesData if present
+        for (const brand in brandWatchesData) {
+            const found = brandWatchesData[brand].find(w => w.name === item.name);
+            if (found && typeof found.stock === "number") {
+                found.stock -= item.quantity;
+                if (found.stock < 0) found.stock = 0;
+            }
+        }
+    });
+    localStorage.setItem('products', JSON.stringify(products));
+}
+
+// On page load, restore stocks from localStorage if present
+/*(function restoreStocks() {
+    const stored = localStorage.getItem('products');
+    if (stored) {
+        const arr = JSON.parse(stored);
+        arr.forEach(saved => {
+            let prod = getProductByName(saved.name);
+            if (prod) prod.stock = saved.stock;
+        });
+    }
+})();*/
+
+// --- Patch addToCart to prevent adding if out of stock and update stock displays ---
+function addToCart(button, event) {
+    if (event) event.stopPropagation();
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (!loggedInUser) {
+        alert('Please log in to add items to your cart.');
+        showLogin();
+        return;
+    }
+    const card = button.closest('.watch-card');
+    const name = card.querySelector('h3').textContent;
+    let product = getProductByName(name);
+    if (!product || product.stock <= 0) {
+        alert('Sorry, this item is out of stock.');
+        updateStockDisplays();
+        return;
+    }
+    const price = card.querySelector('p').textContent;
+    const image = card.querySelector('img').src;
+
+    const cartKey = `cart_${loggedInUser.username}`;
+    let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+    const existing = cart.find(item => item.name === name);
+    if (existing) {
+        if (existing.quantity + 1 > product.stock) {
+            alert('Not enough stock available.');
+            return;
+        }
+        existing.quantity += 1;
+    } else {
+        cart.push({ name, price, image, quantity: 1 });
+    }
+    localStorage.setItem(cartKey, JSON.stringify(cart));
+    alert(`${name} added to cart!`);
+    loadCart();
+    updateStockDisplays();
+}
+
+// --- Patch addToCartFromModal for modal add-to-cart ---
+function addToCartFromModal(info, qty) {
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (!loggedInUser) {
+        alert('Please log in to add items to your cart.');
+        showLogin();
+        return;
+    }
+    let product = getProductByName(info.name);
+    if (!product || product.stock < qty) {
+        alert('Sorry, not enough stock available.');
+        updateStockDisplays();
+        return;
+    }
+    const cartKey = `cart_${loggedInUser.username}`;
+    let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+    const existing = cart.find(item => item.name === info.name);
+    if (existing) {
+        if (qty > product.stock) {
+            alert('Not enough stock available.');
+            return;
+        }
+        existing.quantity = qty;
+    } else {
+        cart.push({ name: info.name, price: info.price, image: info.image, quantity: qty });
+    }
+    localStorage.setItem(cartKey, JSON.stringify(cart));
+    alert(`${info.name} added to cart!`);
+    closeDetailsModal();
+    loadCart();
+    updateStockDisplays();
+}
+
+// --- Update stock after checkout ---
+const origCheckout = document.getElementById('checkoutBtn')?.onclick;
+document.getElementById('checkoutBtn').onclick = function() {
+    // This will be replaced in loadCart, so handled there
+};
+
+// --- Patch loadCart to update stock displays after rendering ---
+const origLoadCart = loadCart;
+loadCart = function() {
+    origLoadCart.apply(this, arguments);
+    updateStockDisplays();
+};
+
+// --- Update stock after checkout in loadCart ---
+function loadCart() {
+    const cartItemsDiv = document.getElementById('cartItems');
+    const cartEmptyDiv = document.getElementById('cartEmpty');
+    const cartTotalDiv = document.getElementById('cartTotal');
+    cartItemsDiv.innerHTML = '';
+    cartTotalDiv.textContent = '';
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (!loggedInUser) {
+        cartEmptyDiv.style.display = 'block';
+        cartEmptyDiv.textContent = 'Please log in to view your cart.';
+        return;
+    }
+    const cartKey = `cart_${loggedInUser.username}`;
+    let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+    if (cart.length === 0) {
+        cartEmptyDiv.style.display = 'block';
+        cartEmptyDiv.textContent = 'Your cart is empty.';
+        return;
+    }
+    cartEmptyDiv.style.display = 'none';
+
+    let total = 0;
+    cart.forEach((item, idx) => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'cart-item';
+        itemDiv.innerHTML = `
+            <img src="${item.image}" alt="${item.name}">
+            <div class="cart-info">
+                <span class="cart-name">${item.name}</span>
+                <span class="cart-price">${item.price}</span>
+                <div style="margin-top:8px;">
+                    <button class="qty-btn" onclick="changeQuantity(${idx}, -1)">-</button>
+                    <input type="number" min="1" value="${item.quantity || 1}" onchange="setQuantity(${idx}, this.value)" style="width:40px;text-align:center;">
+                    <button class="qty-btn" onclick="changeQuantity(${idx}, 1)">+</button>
+                </div>
+            </div>
+            <button class="remove-btn" onclick="removeFromCart(${idx})">Remove</button>
+        `;
+        cartItemsDiv.appendChild(itemDiv);
+
+        // Parse price (remove ₱ and commas)
+        const priceNum = parseFloat(item.price.replace(/[₱,]/g, ''));
+        if (!isNaN(priceNum)) total += priceNum * (item.quantity || 1);
+    });
+    cartTotalDiv.textContent = `Total: ₱${total.toLocaleString()}`;
+
+    const checkoutBtn = document.getElementById('checkoutBtn');
+const deliveryForm = document.getElementById('deliveryForm');
+const trackOrderBtn = document.getElementById('trackOrderBtn');
+if (cart.length > 0) {
+    checkoutBtn.style.display = 'block';
+    deliveryForm.style.display = 'block';
+    trackOrderBtn.style.display = (JSON.parse(localStorage.getItem(`orders_${loggedInUser.username}`)) || []).length > 0 ? 'block' : 'none';
+    checkoutBtn.onclick = function() {
+        // Validate delivery info
+        const name = document.getElementById('deliveryName').value.trim();
+        const address = document.getElementById('deliveryAddress').value.trim();
+        const contact = document.getElementById('deliveryContact').value.trim();
+
+        // Full Name: only allow letters and spaces
+        if (!/^[A-Za-z\s]+$/.test(name)) {
+            alert('Full Name should only contain letters and spaces.');
+            return;
+        }
+        // Address: allow letters, numbers, spaces, comma, period, dash
+        if (!/^[A-Za-z0-9\s,.\-#]+$/.test(address)) {
+            alert('Address should only contain letters, numbers, spaces, comma, period, dash, or #.');
+            return;
+        }
+        // Contact: only allow numbers, at least 7 digits
+        if (!/^\d{7,}$/.test(contact)) {
+            alert('Contact Number should only contain numbers and be at least 7 digits.');
+            return;
+        }
+
+        if (!name || !address || !contact) {
+            alert('Please fill out all delivery information before checking out.');
+            return;
+        }
+        if (confirm('Are you sure you want to checkout?')) {
+            // Save order info for tracking
+            const order = {
+                items: cart,
+                name,
+                address,
+                contact,
+                status: 'Processing',
+                orderTime: new Date().toLocaleString()
+            };
+            // --- NEW: Save to orders_<username> array ---
+            let orders = JSON.parse(localStorage.getItem(`orders_${loggedInUser.username}`)) || [];
+            orders.push(order);
+            localStorage.setItem(`orders_${loggedInUser.username}`, JSON.stringify(orders));
+            // --- END NEW ---
+
+            updateStockAfterCheckout(cart);
+            localStorage.setItem(cartKey, JSON.stringify([]));
+            loadCart();
+            alert('Thank you for your purchase! Your order has been placed.');
+            trackOrderBtn.style.display = 'block';
+        }
+    };
+    trackOrderBtn.onclick = function() {
+        showSection('orderTracking');
+        loadOrderTracking();
+    };
+} else {
+    checkoutBtn.style.display = 'none';
+    deliveryForm.style.display = 'none';
+    trackOrderBtn.style.display = (JSON.parse(localStorage.getItem(`orders_${loggedInUser.username}`)) || []).length > 0 ? 'block' : 'none';
+}
+        }
+
+        function removeFromCart(idx) {
+            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+            if (!loggedInUser) return;
+            const cartKey = `cart_${loggedInUser.username}`;
+            let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+            cart.splice(idx, 1);
+            localStorage.setItem(cartKey, JSON.stringify(cart));
+            loadCart();
+        }
+
+        function changeQuantity(idx, delta) {
+            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+            if (!loggedInUser) return;
+            const cartKey = `cart_${loggedInUser.username}`;
+            let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+            if (!cart[idx]) return;
+            cart[idx].quantity = (cart[idx].quantity || 1) + delta;
+            if (cart[idx].quantity < 1) cart[idx].quantity = 1;
+            localStorage.setItem(cartKey, JSON.stringify(cart));
+            loadCart();
+        }
+
+        function setQuantity(idx, value) {
+            const qty = parseInt(value);
+            if (isNaN(qty) || qty < 1) return;
+            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+            if (!loggedInUser) return;
+            const cartKey = `cart_${loggedInUser.username}`;
+            let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+            if (!cart[idx]) return;
+            cart[idx].quantity = qty;
+            localStorage.setItem(cartKey, JSON.stringify(cart));
+            loadCart();
+        }
+
+        // Add descriptions for each product
+const productDescriptions = {
+    "Tag Heuer Monaco": "A legendary square chronograph, famous for its bold design and racing heritage.",
+    "Cartier Tank": "An iconic rectangular watch, symbolizing timeless elegance and sophistication.",
+    "Patek Philippe Grandmaster Chime": "The most complicated wristwatch ever made by Patek Philippe.",
+    "Omega Speedmaster": "The first watch worn on the moon, a classic chronograph for explorers.",
+    "Audemars Piguet Royal Oak": "A luxury sports watch with a distinctive octagonal bezel.",
+    "Rolex Submariner": "The world’s most famous dive watch, robust and instantly recognizable.",
+    "Breitling Navitimer": "A pilot’s chronograph with a unique circular slide rule bezel.",
+    "Seiko Presage": "A refined Japanese mechanical watch with exquisite craftsmanship.",
+    "Tissot Le Locle": "A classic dress watch, named after Tissot’s home town.",
+    "Hublot Big Bang": "A bold fusion of materials and innovative design.",
+    "Longines Master": "A sophisticated automatic watch with classic styling.",
+    "Cartier Santos": "The first pilot’s wristwatch, designed for Alberto Santos-Dumont.",
+    "Patek Philippe Perpetual Calendar": "A masterpiece of calendar complication and elegance.",
+    "Tudor Black Bay": "A modern dive watch inspired by Tudor’s vintage models.",
+    "Breguet Grande Complication": "A showcase of Breguet’s high horology and technical prowess.",
+    "IWC Pilot's Watch": "A robust and legible timepiece for aviation enthusiasts.",
+    "Jaeger-LeCoultre Reverso": "A unique reversible watch, originally designed for polo players.",
+    "Bulgari Octo Finissimo": "Ultra-thin Italian design with contemporary flair.",
+    "Grand Seiko Spring Drive": "A blend of mechanical and quartz precision, uniquely Japanese.",
+    "Montblanc 1858": "Inspired by vintage mountain exploration watches."
+};
+
+// Helper to get product info by name
+function getProductInfo(name) {
+    // Try to find in shop section
+    const card = Array.from(document.querySelectorAll('.watch-card')).find(card =>
+        card.querySelector('h3') && card.querySelector('h3').textContent === name
+    );
+    if (card) {
+        return {
+            name,
+            image: card.querySelector('img').src,
+            price: card.querySelector('p').textContent,
+            description: productDescriptions[name] || "No description available."
+        };
+    }
+    // Try to find in brandWatchesData
+    for (const brand in brandWatchesData) {
+        const found = brandWatchesData[brand].find(w => w.name === name);
+        if (found) {
+            return {
+                name,
+                image: found.image,
+                price: found.price,
+                description: productDescriptions[name] || "No description available."
+            };
+        }
+    }
+    return null;
+}
+
+// Show details modal
+function showDetails(button) {
+    const card = button.closest('.watch-card');
+    const name = card.querySelector('h3').textContent;
+    const info = getProductInfo(name);
+    if (!info) return;
+
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    const cartKey = loggedInUser ? `cart_${loggedInUser.username}` : null;
+    let cartQty = 1;
+    if (loggedInUser && cartKey) {
+        const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+        const existing = cart.find(item => item.name === name);
+        if (existing) cartQty = existing.quantity;
+    }
+
+    document.getElementById('detailsModalBody').innerHTML = `
+        <img src="${info.image}" alt="${info.name}" style="width:100%;max-width:220px;display:block;margin:auto;border-radius:8px;">
+        <h3 style="text-align:center;margin:16px 0 8px 0;">${info.name}</h3>
+        <p style="text-align:center;color:#b8860b;font-weight:bold;font-size:1.2em;margin:0 0 12px 0;">${info.price}</p>
+        <p style="text-align:center;color:#444;margin-bottom:18px;">${info.description}</p>
+        <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:18px;">
+            <label for="modalQty" style="margin:0;font-weight:bold;">Qty:</label>
+            <input id="modalQty" type="number" min="1" value="${cartQty}" style="width:60px;text-align:center;padding:4px;">
+        </div>
+        <button id="modalAddToCartBtn" class="add-to-cart-btn" style="width:100%;padding:10px;font-size:1em;" ${loggedInUser ? '' : 'disabled'}>Add to Cart</button>
+        ${!loggedInUser ? '<div style="color:#e53935;text-align:center;margin-top:10px;">Please log in to add to cart.</div>' : ''}
+    `;
+    document.getElementById('detailsModal').style.display = 'block';
+
+    document.getElementById('modalAddToCartBtn').onclick = function() {
+        const qty = parseInt(document.getElementById('modalQty').value) || 1;
+        addToCartFromModal(info, qty);
+    };
+}
+
+
+// Close details modal
+function closeDetailsModal() {
+    document.getElementById('detailsModal').style.display = 'none';
+}
+
+// Attach showDetails to all View Details buttons (shop and brands)
+function attachViewDetailsEvents() {
+    document.querySelectorAll('.watch-card button[data-lang="viewDetails"]').forEach(btn => {
+        btn.onclick = function() { showDetails(this); };
+    });
+}
+
+// Re-attach after dynamic brand watches load
+const origShowBrandWatches = showBrandWatches;
+showBrandWatches = function(brand) {
+    origShowBrandWatches(brand);
+    setTimeout(attachViewDetailsEvents, 0);
+};
+
+// Initial attach after DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+    attachViewDetailsEvents();
+});
+
+function loadOrderTracking() {
+    const orderStatusDiv = document.getElementById('orderStatus');
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (!loggedInUser) {
+        orderStatusDiv.innerHTML = '<p>Please log in to track your orders.</p>';
+        return;
+    }
+    const orders = JSON.parse(localStorage.getItem(`orders_${loggedInUser.username}`)) || [];
+    if (orders.length === 0) {
+        orderStatusDiv.innerHTML = '<p>No orders found.</p>';
+        return;
+    }
+    orderStatusDiv.innerHTML = orders.map((order, idx) => `
+        <div style="border:1px solid #ccc; border-radius:8px; padding:16px; margin-bottom:18px;">
+            <h3>Order #${orders.length - idx}</h3>
+            <p><strong>Status:</strong> <span style="color:#b8860b">${order.status}</span></p>
+            <p><strong>Name:</strong> ${order.name}</p>
+            <p><strong>Address:</strong> ${order.address}</p>
+            <p><strong>Contact:</strong> ${order.contact}</p>
+            <p><strong>Order Time:</strong> ${order.orderTime}</p>
+            <h4>Items:</h4>
+            <ul>
+                ${order.items.map(item => `<li>${item.quantity} x ${item.name} (${item.price})</li>`).join('')}
+            </ul>
+        </div>
+    `).join('');
+}
+    </script>
+</body>
+</html>

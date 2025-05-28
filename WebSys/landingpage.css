@@ -1,0 +1,453 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    padding-top: 60px; 
+    background-color:#f7e7ce;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 5px 18px;
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    z-index: 1000; 
+}
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+}
+.navbar a:hover {
+    background-color: #575757;
+    border-radius: 4px;
+}
+.navbar .logo img {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+    padding: 0 auto;
+    margin-right: -15px;
+}
+.navbar .menu {
+    display: flex;
+    gap: 15px; 
+}
+.navbar .extras {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.navbar .search-bar {
+    position: relative;
+    margin-right: 300px;
+}
+.navbar .search-bar input {
+    padding: 8px; 
+    border: none;
+    border-radius: 4px;
+    width: 300px
+}
+.navbar .search-bar input:focus {
+    outline: none;
+}
+.navbar .language-select select {
+    padding: 8px; 
+    border: none;
+    border-radius: 4px;
+    background-color: #575757;
+    color: white;
+    
+}
+.navbar .language-select select:focus {
+    outline: none;
+}
+.navbar .cart {
+    color: white;
+    font-size: 20px; 
+    cursor: pointer;
+    margin-right: 170px;
+}
+.announcements {
+    background-color: gold;
+    padding: 1px;
+    text-align: center;
+    position:fixed;
+    top: 60px; 
+    width: 100%; 
+    z-index: 900; 
+    margin-top: 15px;
+}
+h2, h3 {
+    font-family: 'Playfair Display', serif;
+}
+.watch_header1 {
+    text-align: center;
+    margin-top: 80px;
+    font-family: 'playfair display', serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffd700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: #333;
+    padding: 10px;
+}
+.watch-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    margin-top: -10px;
+}
+.watch-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    background-color: #fffff0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 220px;
+    height: 350px;
+    margin: auto;
+}
+.watch-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.watch-card img {
+    width: 180px;
+    height: 200px;
+}
+.watch-card .details {
+    padding: 10px;
+}
+.watch-card .details h3 {
+    margin: 10px 0;
+    font-size: 18px;
+}
+.watch-card .details p {
+    margin: 5px 0;
+    color: #555;
+    font-size: 14px;
+}
+.watch-card .details button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+}
+.watch-card .details button:hover {
+    background-color: #575757;
+}
+.brand-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 50px;
+}
+.brand-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    background-color: #fffff0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 220px;
+    height: 200px;
+    margin: auto;
+}
+.brand-logo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+.search-suggestions {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 200px;
+    z-index: 1100; 
+}
+.search-suggestions div {
+    padding: 8px;
+    cursor: pointer;
+}
+.search-suggestions div:hover {
+    background-color: #f0f0f0;
+}
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 40px;
+}
+.auth-buttons span {
+    font-size: 16px;
+    font-weight: bold;
+}
+.auth-buttons button {
+    background: none;
+    border: none;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 16px;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999 !important;
+    left: 0; top: 0;
+    width: 100vw; height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+}
+.modal[style*="display: block"] {
+    display: flex !important;
+}
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 30%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin: 0; /* Remove margin for flex centering */
+}
+.modal-content h2 {
+    margin-top: 0;
+}
+.modal-content label {
+    display: block;
+    margin: 10px 0 5px;
+}
+.modal-content input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.modal-content button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.modal-content button:hover {
+    background-color: #575757;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.brand-watches-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+.brand-watches-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+.brand-watches-list .watch-card {
+    width: 200px;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.brand-watches-list .watch-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+.brand-watches-list .watch-card .details {
+    margin-top: 10px;
+}
+
+/* --- Landing Page (Home Section) Styles --- */
+.home-section {
+    display: block;
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.home-section .landing-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    color: white;
+    text-shadow: 0 2px 8px #000;
+}
+
+.home-section .landing-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 3em;
+    margin-bottom: 0.5em;
+}
+
+.home-section .landing-desc {
+    font-size: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+.home-section .shop-now-btn {
+    padding: 1em 2em;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 30px;
+    background: #222;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #000;
+    transition: background 0.2s;
+}
+
+.home-section .shop-now-btn:hover {
+    background: #444;
+}
+
+/* --- Background Video Styles (already present, but fixed for 100vh) --- */
+#landingBgVideoContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    display: block; /* Will be toggled by JS */
+    margin-top: 0;
+}
+
+#landingBgVideoContainer video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: #000;
+    pointer-events: none;
+}
+
+/* --- Section Display Logic (JavaScript-driven) --- */
+.no-scroll {
+    overflow: hidden;
+}
+.cart-section {
+    max-width: 600px;
+    margin: 80px auto 40px auto;
+    background: #fff8e1;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    padding: 32px 24px 24px 24px;
+    min-height: 300px;
+}
+#cartItems {
+    margin-top: 20px;
+}
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+.cart-item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: #f0f0f0;
+}
+.cart-item .cart-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.cart-item .cart-name {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.cart-item .cart-price {
+    color: #b8860b;
+    font-size: 1em;
+    margin-top: 2px;
+}
+.cart-item .remove-btn {
+    background: #e53935;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 7px 14px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: background 0.2s;
+}
+.cart-item .remove-btn:hover {
+    background: #b71c1c;
+}
+#cartTotal {
+    text-align: right;
+    font-size: 1.2em;
+    color: #222;
+}
+.qty-btn {
+    background: #eee;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 2px 8px;
+    margin: 0 2px;
+    cursor: pointer;
+    font-size: 1em;
+}
+.qty-btn:hover {
+    background: #ccc;
+}
+.cart-item input[type="number"] {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 2px;
+    margin: 0 2px;
+}
+
+/* Hide search bar on landing page (home-section) */
+.home-section ~ .navbar .search-bar,
+body.landing-page .navbar .search-bar {
+    display: none !important;
+}

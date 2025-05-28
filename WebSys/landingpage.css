@@ -97,8 +97,8 @@ h2, h3 {
 }
 .watch-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
     padding: 15px;
     margin-bottom: 10px;
     margin-top: -10px;
@@ -120,6 +120,9 @@ h2, h3 {
 .watch-card img {
     width: 180px;
     height: 200px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
 }
 .watch-card .details {
     padding: 10px;
@@ -261,33 +264,54 @@ h2, h3 {
     cursor: pointer;
 }
 .brand-watches-container {
-    margin-top: 20px;
-    padding: 20px;
+    margin-top: 20px !important;
+    padding: 10px;
     background-color: #f9f9f9;
     border-radius: 8px;
+    text-align: center;
+    width: 50%;
+    margin: 0px auto;
 }
 .brand-watches-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 24px;
+    padding: 16px 0;
+    justify-items: center;
 }
 .brand-watches-list .watch-card {
-    width: 200px;
-    text-align: center;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 180px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border-radius: 10px;
+    padding: 12px;
+    background: #fff;
+    transition: transform 0.15s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .brand-watches-list .watch-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 4px;
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    border-radius: 6px;
 }
-.brand-watches-list .watch-card .details {
-    margin-top: 10px;
+.brand-watches-list .watch-card .details h3 {
+    font-size: 1em;
+    margin: 8px 0 4px 0;
+    text-align: center;
+}
+.brand-watches-list .watch-card .details p {
+    font-size: 0.95em;
+    margin: 2px 0;
+    text-align: center;
+}
+.brand-watches-list .watch-card .details button {
+    font-size: 0.95em;
+    padding: 6px 10px;
+    margin: 6px 0 0 0;
+    width: 100%;
 }
 
 /* --- Landing Page (Home Section) Styles --- */

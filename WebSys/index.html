@@ -13,7 +13,6 @@
     <div id="landingBgVideoContainer">
         <video id="landingBgVideo" autoplay loop muted playsinline>
             <source src="landingpagebg.mp4" type="video/mp4">
-            Your browser does not support the video tag.
         </video>
     </div>
 
@@ -812,7 +811,7 @@ function renderBrands() {
     });
 }
 
-// --- Update stock numbers in real time and prevent adding to cart if out of stock ---
+
 
 // Utility: Get product by name (from products array)
 function getProductByName(name) {
@@ -821,7 +820,7 @@ function getProductByName(name) {
 
 // Update all stock displays in shop and brands
 function updateStockDisplays() {
-    // Update shop cards
+
     document.querySelectorAll('.watch-card').forEach(card => {
         const name = card.querySelector('h3')?.textContent;
         if (!name) return;
@@ -833,7 +832,7 @@ function updateStockDisplays() {
             if (addBtn) {
                 addBtn.disabled = product.stock <= 0;
                 addBtn.setAttribute('data-lang', product.stock <= 0 ? 'outOfStock' : 'addToCart');
-                // Let the translation function handle the text
+
                 switchLanguage();
             }
         }
@@ -842,7 +841,7 @@ function updateStockDisplays() {
     document.querySelectorAll('#brandWatchesList .watch-card').forEach(card => {
         const name = card.querySelector('h3')?.textContent;
         if (!name) return;
-        // Try to find in products or brandWatchesData
+
         let product = getProductByName(name);
         if (!product) {
             for (const brand in brandWatchesData) {
@@ -884,19 +883,9 @@ function updateStockAfterCheckout(cart) {
     localStorage.setItem('products', JSON.stringify(products));
 }
 
-// On page load, restore stocks from localStorage if present
-/*(function restoreStocks() {
-    const stored = localStorage.getItem('products');
-    if (stored) {
-        const arr = JSON.parse(stored);
-        arr.forEach(saved => {
-            let prod = getProductByName(saved.name);
-            if (prod) prod.stock = saved.stock;
-        });
-    }
-})();*/
 
-// --- Patch addToCart to prevent adding if out of stock and update stock displays ---
+
+// ADD TO CART
 function addToCart(button, event) {
     if (event) event.stopPropagation();
     const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
@@ -934,7 +923,7 @@ function addToCart(button, event) {
     updateStockDisplays();
 }
 
-// --- Patch addToCartFromModal for modal add-to-cart ---
+// ADD TO CART FROM MODAL
 function addToCartFromModal(info, qty) {
     const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
     if (!loggedInUser) {
@@ -980,7 +969,7 @@ loadCart = function() {
     updateStockDisplays();
 };
 
-// --- Update stock after checkout in loadCart ---
+//STOCK UPDATE
 function loadCart() {
     const cartItemsDiv = document.getElementById('cartItems');
     const cartEmptyDiv = document.getElementById('cartEmpty');
@@ -1021,7 +1010,7 @@ function loadCart() {
         `;
         cartItemsDiv.appendChild(itemDiv);
 
-        // Parse price (remove ₱ and commas)
+        // PRICE PARSING
         const priceNum = parseFloat(item.price.replace(/[₱,]/g, ''));
         if (!isNaN(priceNum)) total += priceNum * (item.quantity || 1);
     });
@@ -1070,11 +1059,11 @@ if (cart.length > 0) {
                 status: 'Processing',
                 orderTime: new Date().toLocaleString()
             };
-            // --- NEW: Save to orders_<username> array ---
+
             let orders = JSON.parse(localStorage.getItem(`orders_${loggedInUser.username}`)) || [];
             orders.push(order);
             localStorage.setItem(`orders_${loggedInUser.username}`, JSON.stringify(orders));
-            // --- END NEW ---
+     
 
             updateStockAfterCheckout(cart);
             localStorage.setItem(cartKey, JSON.stringify([]));
@@ -1129,7 +1118,7 @@ if (cart.length > 0) {
             loadCart();
         }
 
-        // Add descriptions for each product
+        // PRODUCT DESCRIPTIONS
 const productDescriptions = {
     "Tag Heuer Monaco": "A legendary square chronograph, famous for its bold design and racing heritage.",
     "Cartier Tank": "An iconic rectangular watch, symbolizing timeless elegance and sophistication.",
@@ -1153,9 +1142,9 @@ const productDescriptions = {
     "Montblanc 1858": "Inspired by vintage mountain exploration watches."
 };
 
-// Helper to get product info by name
+
 function getProductInfo(name) {
-    // Try to find in shop section
+    
     const card = Array.from(document.querySelectorAll('.watch-card')).find(card =>
         card.querySelector('h3') && card.querySelector('h3').textContent === name
     );
@@ -1167,7 +1156,7 @@ function getProductInfo(name) {
             description: productDescriptions[name] || "No description available."
         };
     }
-    // Try to find in brandWatchesData
+
     for (const brand in brandWatchesData) {
         const found = brandWatchesData[brand].find(w => w.name === name);
         if (found) {
@@ -1224,26 +1213,27 @@ function closeDetailsModal() {
     document.getElementById('detailsModal').style.display = 'none';
 }
 
-// Attach showDetails to all View Details buttons (shop and brands)
+
 function attachViewDetailsEvents() {
     document.querySelectorAll('.watch-card button[data-lang="viewDetails"]').forEach(btn => {
         btn.onclick = function() { showDetails(this); };
     });
 }
 
-// Re-attach after dynamic brand watches load
+
 const origShowBrandWatches = showBrandWatches;
 showBrandWatches = function(brand) {
     origShowBrandWatches(brand);
     setTimeout(attachViewDetailsEvents, 0);
 };
 
-// Initial attach after DOMContentLoaded
+
 document.addEventListener('DOMContentLoaded', () => {
     attachViewDetailsEvents();
-    renderBrands(); // <-- Render brands on load
+    renderBrands(); 
 });
 
+//ORDER TRACKING
 function loadOrderTracking() {
     const orderStatusDiv = document.getElementById('orderStatus');
     const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
@@ -1277,7 +1267,7 @@ function loadOrderTracking() {
     `).join('');
 }
 
-// Add this function below loadOrderTracking
+// CANCEL ORDER
 function cancelOrder(orderIdx) {
     const reason = prompt("Please provide a reason for cancelling this order:");
     if (!reason || !reason.trim()) {
@@ -1294,9 +1284,9 @@ function cancelOrder(orderIdx) {
     localStorage.setItem(ordersKey, JSON.stringify(orders));
     loadOrderTracking();
 }
-// --- PATCH: showBrandWatches function ---
+
 function showBrandWatches(brand) {
-    // Show the brands section and the brand watches container
+
     showSection('brands');
     const brandWatchesContainer = document.getElementById('brandWatches');
     const brandName = document.getElementById('brandName');
@@ -1328,9 +1318,9 @@ function showBrandWatches(brand) {
     updateStockDisplays();
 }
 
-// --- Add all brands from shop watches to brandWatchesData --
 
-// Helper: Map product names to brands (customize as needed)
+
+// PRODUCT MAPPING
 const productBrandMap = {
     "Tag Heuer Monaco": "Tag Heuer",
     "Cartier Tank": "Cartier",
@@ -1354,22 +1344,22 @@ const productBrandMap = {
     "Montblanc 1858": "Montblanc"
 };
 
-// Add all products to brandWatchesData by brand
+
 products.forEach(prod => {
     const brand = productBrandMap[prod.name] || "Other";
     if (!brandWatchesData[brand]) brandWatchesData[brand] = [];
-    // Prevent duplicates
+
     if (!brandWatchesData[brand].some(w => w.name === prod.name)) {
         brandWatchesData[brand].push({
             name: prod.name,
             image: prod.image,
-            price: prod.price || "", // Add price if available
+            price: prod.price || "", 
             stock: prod.stock
         });
     }
 });
 
-// Clear order tracking data on page reload
+
 window.addEventListener('DOMContentLoaded', () => {
     const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
     if (loggedInUser) {
